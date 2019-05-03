@@ -14,17 +14,21 @@ restService.use(
 restService.use(bodyParser.json());
 
 restService.post("/getSOStatus", function(req, res) {
-    //console.log('event data: ' + JSON.stringify(event.data));	
-    //var replyMsg;
-    //var intent = req.data['intent'];
-    //var orderNumber = req.data['OrderNum'];
-    var replyMsg = "Returning from webhook";
-    //console.log('intent detected: ' + intent);
+    //console.log('event data: ' + JSON.stringify(event.data));
+    var replyMsg;
+    var intent = req.data['intent'];
+    var orderNumber = req.data['OrderNum'] || false;
+    if (orderNumber) {
+        orderNumber = parseInt(orderNumber, 10);
+        replyMsg = 'Inside web hook';
+    } else {
+        replyMsg = 'Could not understand your order number, please double check';
+    }
     return res.json({
-       replies: [{
-      type: "text",
-      content: replyMsg
-    }]
+        replies: [{
+            type: "text",
+            content: replyMsg
+        }]
     });
 });
 
