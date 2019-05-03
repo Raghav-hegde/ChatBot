@@ -16,8 +16,8 @@ restService.use(bodyParser.json());
 restService.post("/getSOStatus", function(req, res) {
     //console.log('event data: ' + JSON.stringify(event.data));
     var replyMsg;
-    var intent = req.data['intent'];
-    var orderNumber = req.data['OrderNum'] || false;
+    var intent = req.body.intent;
+    var orderNumber = req.body.OrderNum || false;
     if (orderNumber) {
         orderNumber = parseInt(orderNumber, 10);
         replyMsg = 'Inside web hook';
