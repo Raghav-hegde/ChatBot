@@ -20,7 +20,7 @@ restService.post("/getSOStatus", function(req, res) {
     var orderNumber = req.body.OrderNum || false;
     if (orderNumber) {
         orderNumber = parseInt(orderNumber, 10);
-        replyMsg = 'Inside web hook';
+        replyMsg = 'Inside web hook' + orderNumber;
     } else {
         replyMsg = 'Could not understand your order number, please double check';
     }
