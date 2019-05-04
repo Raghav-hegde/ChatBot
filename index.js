@@ -22,7 +22,7 @@ restService.post("/getSOStatus", function(req, res) {
     if (orderNumber) {
         //orderNumber = parseInt(orderNumber, 10);
         if (orderNumber.startsWith('111')) {
-            replyMsg = 'Here is your order detail:\nSO: ' + orderNumber + '\nPO Number: XYZ\nReq.Delivery Date: MM/DD/YY\nDelivery Block: S4\nMaterial: Matnr\nReqd Qty: XX\nConfirmed Qty: YY\nNet Value: $$\nDelivery Doc: XYZ';
+            replyMsg = 'Here is your order detail:\n\nSO: ' + orderNumber + '\nPO Number: XYZ\nReq.Delivery Date: MM/DD/YY\nDelivery Block: S4\nMaterial: Matnr\nReqd Qty: XX\nConfirmed Qty: YY\nNet Value: $$\nDelivery Doc: XYZ';
             return res.json({
                 replies: [{
                     type: "quickReplies",
@@ -51,7 +51,7 @@ restService.post("/getSOStatus", function(req, res) {
                 }
             });
         } else {
-            replyMsg = 'Here is your order detail:\nSO: ' + orderNumber + '\nPO Number: XYZ\nReq.Delivery Date: MM/DD/YY\nDelivery Block: S4\nMaterial: Matnr\nReqd Qty: XX\nConfirmed Qty: YY\nNet Value: $$\nDelivery Doc: XYZ';
+            replyMsg = 'Here is your order detail:\n\nSO: ' + orderNumber + '\nPO Number: XYZ\nReq.Delivery Date: MM/DD/YY\nDelivery Block: None\nMaterial: Matnr\nReqd Qty: XX\nConfirmed Qty: YY\nNet Value: $$\nDelivery Doc: XYZ';
             flag = 1;
         }
     } else {
