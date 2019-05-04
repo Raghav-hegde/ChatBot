@@ -30,7 +30,7 @@ restService.post("/getSOStatus", function(req, res) {
                         title: replyMsg,
                         buttons: [{
                                 title: 'Remove dlv block',
-                                value: 'Remove delivery block S4'
+                                value: 'Remove delivery block S4 from order# ' + orderNumber
                             },
                             {
                                 title: 'Start Over',
