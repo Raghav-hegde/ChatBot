@@ -26,7 +26,14 @@ restService.post("/getSOStatus", function(req, res) {
                 replies: [{
                     type: "text",
                     content: replyMsg
-                }]
+                }],
+                conversation: {
+                    language: "en",
+                    memory: {
+                        orderNum: orderNumber,
+                        deliveryBlock: 'S4'
+                    }
+                }
             });
         } else {
             replyMsg = 'SO: ' + orderNumber + '\nPO Number: XYZ\nReq.Delivery Date: MM/DD/YY\nDelivery Block: S4\nMaterial: Matnr\nReqd Qty: XX\nConfirmed Qty: YY\nNet Value: $$\nDelivery Doc: XYZ';
