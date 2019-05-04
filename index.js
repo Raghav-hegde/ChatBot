@@ -19,8 +19,12 @@ restService.post("/getSOStatus", function(req, res) {
     var intent = req.body.intent;
     var orderNumber = req.body.OrderNum || false;
     if (orderNumber) {
-        orderNumber = parseInt(orderNumber, 10);
-        replyMsg = 'SO: '+orderNumber+'\nPO Number: XYZ\nReq.Delivery Date: MM/DD/YY\nDelivery Block: S4\nMaterial: Matnr\nReqd Qty: XX\nConfirmed Qty: YY\nNet Value: $$\nDelivery Doc: XYZ';
+        //orderNumber = parseInt(orderNumber, 10);
+        if (orderNumber.startsWith('111')) {
+            replyMsg = 'SO: '+orderNumber+'\nPO Number: XYZ';
+        } else{
+            replyMsg = 'SO: '+orderNumber+'\nPO Number: XYZ\nReq.Delivery Date: MM/DD/YY\nDelivery Block: S4\nMaterial: Matnr\nReqd Qty: XX\nConfirmed Qty: YY\nNet Value: $$\nDelivery Doc: XYZ';
+        }
     } else {
         replyMsg = 'Could not understand your order number, please double check';
     }
