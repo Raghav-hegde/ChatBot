@@ -21,15 +21,23 @@ restService.post("/getSOStatus", function(req, res) {
     if (orderNumber) {
         //orderNumber = parseInt(orderNumber, 10);
         if (orderNumber.startsWith('111')) {
-            replyMsg = 'Here is your order details\nSO: ' + orderNumber + '\nPO Number: XYZ';
+            replyMsg = 'Here is your order details\nSO: ' + orderNumber + '\nPO Number: XYZ\nReq.Delivery Date: MM/DD/YY\nDelivery Block: S4\nMaterial: Matnr\nReqd Qty: XX\nConfirmed Qty: YY\nNet Value: $$\nDelivery Doc: XYZ';
             return res.json({
                 replies: [{
                     type: "quickReplies",
                     content: {
                         title: replyMsg,
                         buttons: [{
+                            title: 'Remove dlv block',
+                            value: 'Remove delivery block S4'
+                        },
+                        {
                             title: 'Start Over',
                             value: 'Start Over'
+                        },
+                        {
+                            title: 'No,  Exit from chat',
+                            value: 'Exit'
                         }]
                     }
                 }],
