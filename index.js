@@ -79,6 +79,27 @@ restService.post("/getSOStatus", function(req, res) {
     }
 });
 
+restService.post("/removeDeliveryBlock", function(req,res){
+    var replyMsg;
+    var orderNumber = req.body.OrderNum || false;
+    var block = req.body.Block || false;
+    if (orderNumber) {
+        if (block) {
+            replyMsg = 'Removed block ' + block + ' from order '+ orderNumber;
+        } else {
+             replyMsg = 'Removed block XX from order '+ orderNumber;
+        }
+    } else {
+         replyMsg = 'Could not understand your order number, please double check';
+    }
+    return res.json({
+            replies: [{
+                type: "text",
+                content: replyMsg
+            }]
+        });
+});
+
 restService.listen(process.env.PORT || 8000, function() {
     console.log("Server up and listening");
 });
