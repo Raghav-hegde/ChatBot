@@ -39,7 +39,8 @@ restService.post("/getSOStatus", function(req, res) {
                             {
                                 title: 'No,  Exit from chat',
                                 value: 'Exit'
-                            }]
+                            }
+                        ]
                     }
                 }],
                 conversation: {
@@ -72,32 +73,51 @@ restService.post("/getSOStatus", function(req, res) {
                         {
                             title: 'No,  Exit from chat',
                             value: 'Exit'
-                        }]
+                        }
+                    ]
                 }
             }]
         });
     }
 });
 
-restService.post("/removeDeliveryBlock", function(req,res){
+restService.post("/removeDeliveryBlock", function(req, res) {
     var replyMsg;
     var orderNumber = req.body.OrderNum || false;
     var block = req.body.Block || false;
     if (orderNumber) {
         if (block) {
-            replyMsg = 'Removed block ' + block + ' from order '+ orderNumber;
+            replyMsg = 'Removed block ' + block + ' from order ' + orderNumber;
         } else {
-             replyMsg = 'Removed block XX from order '+ orderNumber;
+            replyMsg = 'Removed block XX from order ' + orderNumber;
         }
     } else {
-         replyMsg = 'Could not understand your order number, please double check';
+        replyMsg = 'Could not understand your order number, please double check';
     }
     return res.json({
-            replies: [{
-                type: "text",
-                content: replyMsg
-            }]
-        });
+        replies: [{
+            type: "text",
+            content: replyMsg
+        }]
+    });
+});
+
+restService.get("/getStatus", function(req, res) {
+    return res.json({
+        Orders: {
+            Order: {
+                orderDetails: [{
+                    OrderNumber: 'XXXXXXX',
+                    RDD: 'RDD',
+                    DBlock: 'Block',
+                    Material: 'Material',
+                    ReqQty: 'XX',
+                    DeliveredQty: 'YY',
+                    Amount: 'Amount'
+                }]
+            }
+        }
+    });
 });
 
 restService.listen(process.env.PORT || 8000, function() {
